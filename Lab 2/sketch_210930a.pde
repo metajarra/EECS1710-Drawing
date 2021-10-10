@@ -5,7 +5,6 @@ int outRand;
 
 PImage glowfish;
 PImage squidswim1;
-PImage marinesnow;
 PImage school1;
 PImage school2;
 PImage school3;
@@ -34,7 +33,6 @@ void setup() {
   // image loading
   glowfish = loadImage("glowfish_1.png");
   squidswim1 = loadImage("squidswim1.png");
-  marinesnow = loadImage("marinesnow.png");
   school1 = loadImage("school1.png");
   school2 = loadImage("school2.png");
   school3 = loadImage("school3.png");
@@ -73,7 +71,6 @@ void draw(){
   } if (title6.elapsed > 2 * title6.duration) {
     title7.display();
   } if (title7.elapsed > 2 * title7.duration) {
-    //image(marinesnow, 0, 0, width, height);
     if (!currentEncounter) {
       outRand = int(random(4)); // THIS IS THE OUTRAND VARIABLE. For fish, have it equal 1. For squid, have it equal 2. For a school of fish, have it equal 3. THIS IS THE OUTRAND VARIABLE
       randomEncounter(outRand);
