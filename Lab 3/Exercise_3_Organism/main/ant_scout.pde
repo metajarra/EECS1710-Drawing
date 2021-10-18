@@ -37,52 +37,89 @@ class scout extends ant {
   }
   
   void search() {   
-    color _c1 = get(int(pos.x) + 6, int(pos.y) + 2);
-    color _c2 = get(int(pos.x) - 2, int(pos.y) + 2);
-    color _c3 = get(int(pos.x) + 2, int(pos.y) + 6);
-    color _c4 = get(int(pos.x) + 2, int(pos.y) - 2);
+    color _c1 = get(int(pos.x) + 5, int(pos.y) + 1);
+    color _c2 = get(int(pos.x) - 2, int(pos.y) + 1);
+    color _c3 = get(int(pos.x) + 1, int(pos.y) + 5);
+    color _c4 = get(int(pos.x) + 1, int(pos.y) - 3);
 
-    c1 = new colourVector(_c1, new PVector(int(pos.x) + 6, int(pos.y) + 2));
-    c2 = new colourVector(_c2, new PVector(int(pos.x) - 2, int(pos.y) + 2));
-    c3 = new colourVector(_c3, new PVector(int(pos.x) + 2, int(pos.y) + 6));
-    c4 = new colourVector(_c4, new PVector(int(pos.x) + 2, int(pos.y) - 2));
+    c1 = new colourVector(_c1, new PVector(int(pos.x) + 5, int(pos.y) + 1));
+    c2 = new colourVector(_c2, new PVector(int(pos.x) - 2, int(pos.y) + 1));
+    c3 = new colourVector(_c3, new PVector(int(pos.x) + 1, int(pos.y) + 5));
+    c4 = new colourVector(_c4, new PVector(int(pos.x) + 1, int(pos.y) - 3));
 
     color cref = color(10, 255, 0);
 
     if(searchFreeze) {
       timer++;
-      if(timer >= 50) {
+      if(timer >= 12) {
         searchFreeze = false;
       }
     }
 
     if(!searchFreeze) {
         if(c1.c == cref) {
-        h.foodPos.add(new PVector(c1.pos.x, c1.pos.y)); 
-        foodFound = true;
+          foodFound = true;
+          
+          for(int i = 0; i < h.foodPos.size() - 1; i++) {      
+            if(c1.posEquals(h.foodPos.get(i))) {
+                foodFound = false; 
+                searchFreeze = true;
+                timer = 0;
+              }
+          }
+          
+          if(foodFound) {
+            h.foodPos.add(new PVector(c1.pos.x, c1.pos.y)); 
+            //println("Scout ", index, "adding pos c1");
+          }
+          
       } else if (c2.c == cref) {
-        h.foodPos.add(new PVector(c2.pos.x, c2.pos.y));
-        foodFound = true;
+          foodFound = true;
+          
+          for(int i = 0; i < h.foodPos.size() - 1; i++) {      
+            if(c2.posEquals(h.foodPos.get(i))) {
+                foodFound = false; 
+                searchFreeze = true;
+                timer = 0;
+              }
+          }
+          
+          if(foodFound) {
+            h.foodPos.add(new PVector(c2.pos.x, c2.pos.y)); 
+            //println("Scout ", index, "adding pos c2");
+          }
       } else if (c3.c == cref) {
-        h.foodPos.add(new PVector(c3.pos.x, c3.pos.y));
-        foodFound = true;      
+          foodFound = true;
+          
+          for(int i = 0; i < h.foodPos.size() - 1; i++) {      
+            if(c3.posEquals(h.foodPos.get(i))) {
+                foodFound = false; 
+                searchFreeze = true;
+                timer = 0;
+              }
+          }
+          
+          if(foodFound) {
+            h.foodPos.add(new PVector(c3.pos.x, c3.pos.y)); 
+            //println("Scout ", index, "adding pos c3");
+          }
       } else if (c4.c == cref) {
-        h.foodPos.add(new PVector(c4.pos.x, c4.pos.y));
-        foodFound = true;
+          foodFound = true;
+          
+          for(int i = 0; i < h.foodPos.size() - 1; i++) {      
+            if(c4.posEquals(h.foodPos.get(i))) {
+                foodFound = false; 
+                searchFreeze = true;
+                timer = 0;
+              }
+          }
+          
+          if(foodFound) {
+            h.foodPos.add(new PVector(c4.pos.x, c4.pos.y)); 
+            //println("Scout ", index, "adding pos c4");
+          }
       }
     }    
-    
-    for(int i = 0; i < h.foodPos.size() - 1; i++) {      
-      if(c1.posEquals(h.foodPos.get(i)) 
-      || c2.posEquals(h.foodPos.get(i)) 
-      || c3.posEquals(h.foodPos.get(i))
-      || c4.posEquals(h.foodPos.get(i)))
-      {
-        foodFound = false; 
-        searchFreeze = true;
-        timer = 0;
-      }
-    }
   }
 }
 

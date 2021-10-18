@@ -9,7 +9,13 @@ hive h; PVector hivePos;
 PShape foodSprite;
 PShape targetSprite;
 PShape antSprite;
-PShape   hiveSprite;
+PShape gathererSprite;
+PShape hiveSprite;
+
+dataDisplay scoutNum;
+dataDisplay gathererNum;
+dataDisplay foodStored;
+dataDisplay foodFound;
 
 void setup() {
   background(0, 0, 0);
@@ -20,6 +26,7 @@ void setup() {
   foodSprite = loadShape("food.svg");
   targetSprite = loadShape("indicator.svg");
   antSprite = loadShape("organism.svg");
+  gathererSprite = loadShape("gatherer.svg");
   hiveSprite = loadShape("indicator.svg");
   
   addFood = new PVector(0, 0);
@@ -38,22 +45,32 @@ void setup() {
   }
   
   hivePos = new PVector(int(random(width)), int(random(height)));
-  h = new hive(hivePos, hiveSprite, antSprite);
+  h = new hive(hivePos, hiveSprite, antSprite, gathererSprite);
+  
+  scoutNum = new dataDisplay(new PVector(10, height - 40), "Number of scouts: ", h.scouts.size());
+  gathererNum = new dataDisplay(new PVector(10, height - 20), "Number of gatherers: ", h.gatherers.size());
+  foodStored = new dataDisplay(new PVector(10, height - 80), "Total food stored: ", int(h.foodGathered));
+  foodFound = new dataDisplay(new PVector(10, height - 60), "Total food found: ", int(h.foodKnown));
 }
 
 void draw() {
   clear();
-  
-  x++;
-  if (x % 100 == 0 && x != 0) {
-    h.addS();
-    h.setTarget(h.scouts.get((x / 100) - 1), new PVector(int(random(width)), int(random(height))));
-  }
-  
+ 
   for (int i = 0; i < 1024; i++) {
     foods.get(i).render();
   }
-  
-  
+    
   h.sim();
+  
+  scoutNum.data = h.scouts.size();
+  scoutNum.show();
+  
+  gathererNum.data = h.gatherers.size();
+  gathererNum.show();
+  
+  foodStored.data = int(h.foodGathered);
+  foodStored.show();
+  
+  foodFound.data = int(h.foodKnown);
+  foodFound.show();
 }
