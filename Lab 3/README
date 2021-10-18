@@ -1,4 +1,26 @@
-This is still a work in progress, this is just an early version
+This project is intended to simulate the behaviour of an isolated ant colony.
 
-This program is intended to simulate an ant colony, with 3 types of ants - scouts, gatherers (not yet implemented), and a queen, which is capable of eating and reproducing 
-This readme will be expanded by the next commit (probably monday)
+The centre of the colony is the HIVE QUEEN. 
+The queen (displayed as a red square) has the following abilities:
+- It can reproduce, creating new ants of different types (scout ants or gatherer ants). New hive queens cannot be created
+- It can eat, consuming food stores when it reproduces
+- It can "remember", with a memory capable of recalling every place it has found food before
+- It can "think" (on a very rudimentary level), capable of deciding whether to create a new gatherer or scout ant depending on the circumstances
+
+There are 2 other types of ANT, inhereting from the ant class. These are the SCOUT ANT and the GATHERER ANT.
+The default ant class has the following abilities:
+- It can move, travelling to a point outside of its immediate vicinity
+- It can "remember", able to recall the point at which it was instantiated (the hive)
+- It can recieve orders from the hive, giving it places to search for food
+
+The scout ant (displayed as a white square) has the following abilities:
+- It can search for food, with sensors directly above, below, to the left, and to the right of itself
+- It can communicate with the hive, informing it that it has found food (and the position)
+
+The gatherer ant (displayed as a yellow square) has the following abilities:
+- It can "gather" food, travelling to a point where food was found and bringing it back to the hive
+- It can communicate with the hive, informing it that it has finished the gathering operation
+
+Food also exists in the world, distributed in randomized patterns. This food only exists to be green, and has no other abilities
+
+The goal of this project is to simulate the exponential growth of an ant colony - the more gatherer ants are created, the higher the queen's ability to create new gatherer ants
