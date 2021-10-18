@@ -1,0 +1,4 @@
+This is still a work in progress, this is just an early version
+
+This program is intended to simulate an ant colony, with 3 types of ants - scouts, gatherers (not yet implemented), and a queen, which is capable of eating and reproducing 
+This readme will be expanded by the next commit (probably monday)
