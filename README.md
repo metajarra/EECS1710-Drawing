@@ -11,4 +11,6 @@ Here is an index of each file with the corresponding name in the syllabus:
 - Lab 6: Exercise 4
 - Lab 7: Exercise 5
 - Lab 8: Project 3
-- Lab 10: Exercise 8
+- Lab 10: Exercise 7
+- Lab 11: Exercise 8
+- Lab 12: FINAL PROJECT (Project 4)
